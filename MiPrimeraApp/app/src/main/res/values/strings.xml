@@ -1,0 +1,13 @@
+<resources>
+    <string name ="app_name">MiPrimeraApp</string>
+
+    <string name="txt_fisica_string">Segundo valor</string>
+    <string name="txt_matematicas_string">Primer valor</string>
+    <string name="Button">Calcular</string>
+    <string name="Radio_button_suma">Sumar</string>
+    <string name="textview">Resultado</string>
+    <string name="radiobutton1">Sumar</string>
+    <string name="radiobutton2">Restar</string>
+    <string name="radiobutton3">Multiplicar</string>
+    <string name="radiobutton4">Dividir</string>
+</resources>
