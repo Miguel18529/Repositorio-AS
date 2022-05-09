@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 verWeb();
             }
         });
@@ -75,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println(query);
 
                 db.execSQL(query);
+
             }
         }
     }
@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
                                 aux_POB = aux_POB + " " + el_list.get(indicePOB+3);
                                 indicePOB++;
                             }
-                            aux_POB = aux_POB.replaceFirst(" ", "");
+                            aux_POB = aux_POB.replaceFirst(" ", "").replace("'", "");
                             v.put("Place of birth", aux_POB);
                         }
 
