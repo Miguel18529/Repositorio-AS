@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.jsoup.Jsoup;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView tv, donete;
     Button boton;
+    ImageView imagen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         tv = findViewById(R.id.textView);
 
         boton = findViewById(R.id.button);
-
+        imagen = findViewById(R.id.imageView);
 
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         if(db!= null){
             List<String> keys = valores.keySet().stream().collect(Collectors.toList());
             for(int i = 0; i<valores.size(); i++){
-                String query = String.valueOf("INSERT INTO") + String.valueOf(" drivers(name, team, country, podiums, points, grand_prix_entered, world_championships, highest_race_finish, highest_grid_position, date_of_birth, place_of_birth) VALUES (");
+                String query = String.valueOf("INSERT INTO") + String.valueOf(" drivers(possitionSeason, name, team, country, podiums, points, grand_prix_entered, world_championships, highest_race_finish, highest_grid_position, date_of_birth, place_of_birth) VALUES (");
 
                 query = query + "'" + keys.get(i) + "'" + ',';
                 query = query + "'" + valores.get(keys.get(i)).get("Team") + "'" + String.valueOf(',');
@@ -107,6 +109,8 @@ public class MainActivity extends AppCompatActivity {
 
                     Elements links = doc.select("a[href]");
 
+                    int positionSeason = 1;
+
                     for (int i = 0; i < links.size(); i++){
                         String link = links.get(i).getElementsByClass("listing-item--link ").attr("href");
                         Document doc_aux = Jsoup.connect(url + link).get();
@@ -126,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                         //Obtener v, value = Map (Team: Ferrari, Country: Monaco .....)
                         Map<String, String> v = new HashMap<>();
 
-                        //Team
+                        //Team y PositionSeason
                         if(el_list.get(0).equals("Team")){
                             int j = 1;
                             String v_aux = "";
@@ -136,6 +140,8 @@ public class MainActivity extends AppCompatActivity {
                                 v_aux = v_aux.replaceFirst(" ",  "");
                             }
                             v.put(el_list.get(0), v_aux);
+                            v.put("Positionseason", String.valueOf(positionSeason));
+                            positionSeason++;
                         }
 
                         //Country

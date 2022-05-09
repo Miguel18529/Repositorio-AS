@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_inicio"/>
+
+    <item
+        android:id="@+id/navigation_standings"
+        android:icon="@drawable/podium"
+        android:title="@string/title_resultados" />
+
+    <item
+        android:id="@+id/navigation_calendar"
+        android:icon="@drawable/ic_baseline_calendar_today_24"
+        android:title="@string/title_calendario" />
+
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/ic_baseline_sports_motorsports_24"
+        android:title="@string/title_ajustes" />
+
+</menu>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#FFBB86FC</color>
+    <color name="colorPrimaryDark">#4CAF50</color>
+    <color name="colorAccent">#FF3700B3</color>
+
+    <color name="colorTransparent">#FFFFFFFF</color>
+
+    <color name="colorGradientStart">#E2000000</color>
+    <color name="colorGradientCenter">#0E0201</color>
+    <color name="colorGradientEnd">#FBA30316</color>
+
+    <color name="colorGradientButtonStart">#E2FFFFFF</color>
+    <color name="colorGradientButtonCenter">#E8E4E4</color>
+    <color name="colorGradientButtonEnd">#FBCAC2C3</color>
+
+    <color name="colorGradientBlackStart">#E2141010</color>
+    <color name="colorGradientBlackCenter">#1C1818</color>
+    <color name="colorGradientBlackEnd">#FB1E1D1D</color>
+
+    <color name="colorGradienttrEnd">#9EA30316</color>
+
+    <color name="colorGradienttrblue">#8DD7FF</color>
+    <color name="colorGradienttrred">#FFB8C0</color>
+
+    <color name="colorf1">#E10600</color>
+
+    <color name="colorgrey">#858484</color>
+
+</resources>

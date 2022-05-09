@@ -1,0 +1,134 @@
+<resources>
+
+    <string name="app_name">F1 App</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome "</string>
+    <string name="invalid_username">Invalid name.</string>
+    <string name="invalid_password">Password must be at least 6 characters.</string>
+    <string name="login_failed">"Login failed. Please, try again."</string>
+    <string name="remember_me">Remember me</string>
+    <string name="join_us">Be part of F1 community. Join us.</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+
+    <!-- Strings related to BottomNavigationActivity -->
+    <string name="title_inicio">Home</string>
+    <string name="title_resultados">Standings</string>
+    <string name="title_calendario">Calendar</string>
+    <string name="title_ajustes">Settings</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Strings related to ListDrivers -->
+    <string name="position">20º</string>
+    <string name="name">Name</string>
+    <string name="surname">SURNAME</string>
+    <string name="team">Team</string>
+    <string name="pointsseason">380 PTS</string>
+
+    <string name="country">Country:</string>
+    <string name="contryres">country</string>
+    <string name="podium">Podium:</string>
+    <string name="podiumres">000</string>
+    <string name="points">Points:</string>
+    <string name="pointsres">0000</string>
+    <string name="gpe">Grand Prix entered:</string>
+    <string name="gperes">000</string>
+    <string name="wc">World Champhionships:</string>
+    <string name="wcres">0</string>
+    <string name="hrf">Highest race finish:</string>
+    <string name="hrfres">0 (x0)</string>
+    <string name="hgp">Highest grid position:</string>
+    <string name="hgpres">0</string>
+    <string name="dob">Date of birth:</string>
+    <string name="dobres">00/00/0000</string>
+    <string name="pob">Place of birth:</string>
+    <string name="pobres">res</string>
+
+    <!-- Strings related to ListTeams -->
+    <string name="positionteam">20º</string>
+    <string name="nameteam">NAME</string>
+    <string name="nameteamdrivers">(Driver 1 / Driver 2)</string>
+    <string name="pointsteam">380 PTS</string>
+
+    <string name="ftn">Full Team Name:</string>
+    <string name="ftnres">Scuderia Ferrari Ferrari Ferrari</string>
+    <string name="base">Base:</string>
+    <string name="baseres">Maranello, Italy</string>
+    <string name="teamchief">Team Chief:</string>
+    <string name="teamchiefres">Mattia Binotto</string>
+    <string name="technicalchief">Technical Chief:</string>
+    <string name="technicalchiefres">Enrico Cardile / Enrico Gualtieri</string>
+    <string name="chassis">Chassis:</string>
+    <string name="chassisres">F1-75</string>
+    <string name="pu">Power Unit:</string>
+    <string name="pures">Ferrari</string>
+    <string name="fte">First Team Entry:</string>
+    <string name="fteres">1950</string>
+    <string name="wcteam">World Champhionships:</string>
+    <string name="wcteamres">16</string>
+    <string name="hrfteam">Highest race finish:</string>
+    <string name="hrfteamres">1 (x241)</string>
+    <string name="pp">Pole Positions:</string>
+    <string name="ppres">232</string>
+    <string name="fl">Fastest Laps:</string>
+    <string name="flres">256</string>
+
+    <!-- Strings related to ListCircuits -->
+    <string name="round">Round 6 -</string>
+    <string name="namecountry">Spain</string>
+    <string name="nameevent">FORMULA 1 PIRELLI GRAN PREMIO DE ESPAÑA 2022</string>
+
+    <string name="fgp">First Grand Prix:</string>
+    <string name="fgpres">1991</string>
+    <string name="nof">Number of Laps:</string>
+    <string name="nofres">66</string>
+    <string name="cl">Circuit Length:</string>
+    <string name="clres">4.675 km</string>
+    <string name="rd">Race Distance:</string>
+    <string name="rdres">308.424 km</string>
+    <string name="lr">Lap Record:</string>
+    <string name="lrres">1:18.149 Max Verstappen (2021)</string>
+    <string name="namecircuit">Circuit de Barcelona-Catalunya</string>
+
+    <!-- Strings related to ListLastRace -->
+    <string name="positionlr">20º</string>
+    <string name="namelr">Name</string>
+    <string name="surnamelr">SURNAME</string>
+    <string name="teamlr">Team</string>
+    <string name="pointsseasonlr">380 PTS</string>
+
+    <!-- Strings related to HomeFragment -->
+    <string name="news">News</string>
+
+    <string name="newsmcanti">Google becomes McLaren\'s newest partner</string>
+    <string name="newsmcansubti">Google is a new Official Partner of the McLaren Formula 1 Team and McLaren Extreme E from 2022. This first of its kind partnership will bring the best of Google products and technology to McLaren, bringing a more seamless experience across devices.</string>
+    <string name="newsmcancomp">Earlier this year, Google became an Official Partner of the McLaren Formula 1 Team, a sport that is data-driven at heart and a natural fit for our products. We specifically teamed up with McLaren because of our shared values, especially around sustainability and inclusion. In 2011, McLaren was the first F1 team to be certified carbon neutral, and they’re currently in the process of adopting renewable energy across all their operations. They also recently announced their first woman driver for the Extreme E electric racing series as a first of many efforts to improve representation.</string>
+    <string name="newsmcancomp2">Through our partnership, we\'re pairing the engineering excellence of McLaren’s race cars with Google technology to help maximize race-day performance. McLaren’s crew is already using Android connected devices and equipment — including phones, tablets and earbuds — to help improve pit stops. Their pit team will also exclusively use the Chrome browser and start using Fitbit devices to monitor their overall health and wellbeing, including heart rate and breathing rate. Meanwhile, the Extreme E McLaren Team will bring Pixel 6s and Pixel Buds to their off-road racing operations for the first time this season.</string>
+    <string name="newsmcancomp3">This collaboration has the potential to solve big and complex engineering challenges — from improving the team’s telemetry and design capabilities through AI, to speeding up decision making and safeguarding team communications using Android 5G. We\'ve got an exciting road ahead with McLaren Racing, and our feet are placed firmly on the gas.</string>
+
+    <string name="newscryptoti">How crypto has become F1\'s latest sponsorship addiction</string>
+    <string name="newscryptosubti">With more and more cryptocurrency deals being struck in the F1 paddock, we looks at how the sport has reached this point.</string>
+    <string name="newscryptocomp">As tobacco advertising was banned so other fad categories joined the fray: computer and software start-ups, beer and liquor labels, financial institutions – when one or other brand associated with these groups popped up on some cars, others followed, lemming-like. It was predictable: when beer label Bitburger sponsored Benetton, its market competitors Veltins and Warsteiner appeared on the sides of Williams and McLarens respectively.</string>
+    <string name="newscryptocomp2">Ditto HSBC, RBS, Credit Suisse and Santander or Dell/HP/Lenovo. Thus, it is no surprise that F1\'s latest craze is linked to blockchains, cryptocurrencies and non-fungible tokens, with a raft of teams now boasting backing from at least one such platform. Again, the last of the majors to go down that route is Ferrari with Velas support, with the platform\'s logos appearing in place of PMI\'s \'space\'.</string>
+    <string name="newscryptocomp3">Not to be outdone, Red Bull this year added Bybit - a deal said to be worth $150 million dollars over the next three seasons - to complement existing NFT sponsor Tezos, the latter partner shared with McLaren. Mercedes is partnered by the FTX App, while a deal that mirrors Marlboro\'s dual F1 and team partnerships sees Aston Martin enjoy support from Crypto.com – an F1 corporate sponsor and naming rights holder to F1\'s Sprint races.</string>
+    <string name="newscryptocomp4">"We\'ve signed significant deals over the winter," said Red Bull team boss Christian Horner during Barcelona testing. "The world is evolving, the world is changing [and] the whole crypto sector is a fascinating one, you\'re seeing it more throughout all sports."</string>
+    <string name="newscryptocomp5">Almost all F1 teams have joined the party</string>
+    <string name="newscryptocomp6">An increasing number of Premier League (or similar) football teams sport are associated with the sector, and, crucially for F1, eight of the 10 current teams enjoy support from one or other of the categories, with Fantom backing AlphaTauri. Sauber (racing as Alfa Romeo) already enjoy Socios.com support and announced the addition of bitcoin meme Floki during the Barcelona pre-tests, while Alpine is partnered by Binance.</string>
+    <string name="newscryptocomp7">"Crypto and decentralised finance are some of the latest markets that have garnered attention in recent years, and they represent a huge potential area to grow business," said Sauber Team Principal Fred Vasseur in Spain.</string>
+    <string name="newscryptocomp8">Although Williams and Haas have no such support (yet?), any sponsor agents worthy of the title will surely plug the gaps sooner or later! Indeed, the former team is said to be investigating adding a crypto sponsor, subject to the brand meeting the team\'s various requirements.</string>
+    <string name="newscryptocomp9">As with tobacco, there are increasing legislative, regulatory and sustainability concerns, but given that the combined value of these sponsorships is estimated at $500m, F1 is unlikely to voluntarily turn down what could soon total a billion bucks in backing as a) more such crypto brands emerge, b) they \'grow\' and up the sponsorship ante, and c) legislative meddling shuts down alternative marketing channels.</string>
+
+    <string name="hyperlinkmorenews">For more news, please check the <a href="https://www.formula1.com/en/latest/all.html">Official F1 page</a>.</string>
+
+    <string name="gallery">Gallery</string>
+
+    <string name="ytvideo">Video</string>
+
+    <!-- Strings related to Settings -->
+    <string name="settings">Settings</string>
+
+</resources>
