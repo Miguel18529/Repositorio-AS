@@ -16,6 +16,7 @@ import android.widget.TextView;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import com.example.prueba_scrapping.BaseDatos;
 
@@ -58,9 +59,13 @@ public class MainActivity extends AppCompatActivity {
         if(db!= null){
             List<String> keys = valores.keySet().stream().collect(Collectors.toList());
             for(int i = 0; i<valores.size(); i++){
-                String query = String.valueOf("INSERT INTO") + String.valueOf(" drivers(possitionSeason, name, team, country, podiums, points, grand_prix_entered, world_championships, highest_race_finish, highest_grid_position, date_of_birth, place_of_birth) VALUES (");
+                String query = String.valueOf("INSERT INTO") + String.valueOf(" drivers(possitionSeason, color, name, surname, team, country, podiums, points, grand_prix_entered," +
+                        " world_championships, highest_race_finish, highest_grid_position, date_of_birth, place_of_birth) VALUES (");
 
-                query = query + "'" + keys.get(i) + "'" + ',';
+                query = query + "'" + valores.get(keys.get(i)).get("Positionseason") + "'" + String.valueOf(',');
+                query = query + "'" + valores.get(keys.get(i)).get("Color") + "'" + String.valueOf(',');
+                query = query + "'" + keys.get(i).split(" ")[0] + "'" + String.valueOf(',');
+                query = query + "'" + keys.get(i).split(" ")[1] + "'" + String.valueOf(',');
                 query = query + "'" + valores.get(keys.get(i)).get("Team") + "'" + String.valueOf(',');
                 query = query + "'" + valores.get(keys.get(i)).get("Country") + "'" + String.valueOf(',');
                 query = query + "'" + valores.get(keys.get(i)).get("Podiums") + "'" + String.valueOf(',');
@@ -108,11 +113,11 @@ public class MainActivity extends AppCompatActivity {
                     c.append(content.text());
 
                     Elements links = doc.select("a[href]");
-
                     int positionSeason = 1;
 
                     for (int i = 0; i < links.size(); i++){
                         String link = links.get(i).getElementsByClass("listing-item--link ").attr("href");
+
                         Document doc_aux = Jsoup.connect(url + link).get();
                         String el = doc_aux.getElementsByClass("stat-list").text();
                         //System.out.println(el);
@@ -142,6 +147,12 @@ public class MainActivity extends AppCompatActivity {
                             v.put(el_list.get(0), v_aux);
                             v.put("Positionseason", String.valueOf(positionSeason));
                             positionSeason++;
+                        }
+
+                        //Color
+                        String color = links.get(i).getElementsByClass("listing-item--link ").attr("style");
+                        if(!color.equals(null)){
+                            v.put("Color", color.replace("color:", ""));
                         }
 
                         //Country
