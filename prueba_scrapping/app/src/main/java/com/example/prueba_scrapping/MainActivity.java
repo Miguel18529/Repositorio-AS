@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         if(db!= null){
             List<String> keys = valores.keySet().stream().collect(Collectors.toList());
             for(int i = 0; i<valores.size(); i++){
-                String query = String.valueOf("INSERT INTO") + String.valueOf(" drivers(possitionSeason, color, name, surname, team, country, podiums, points, grand_prix_entered," +
+                String query = String.valueOf("INSERT INTO") + String.valueOf(" drivers(possitionSeason, color, name, surname, team, pointsSeason, country, podiums, points, grand_prix_entered," +
                         " world_championships, highest_race_finish, highest_grid_position, date_of_birth, place_of_birth) VALUES (");
 
                 query = query + "'" + valores.get(keys.get(i)).get("Positionseason") + "'" + String.valueOf(',');
@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 query = query + "'" + keys.get(i).split(" ")[0] + "'" + String.valueOf(',');
                 query = query + "'" + keys.get(i).split(" ")[1] + "'" + String.valueOf(',');
                 query = query + "'" + valores.get(keys.get(i)).get("Team") + "'" + String.valueOf(',');
+                query = query + "'" + valores.get(keys.get(i)).get("pointsSeason") + "'" + String.valueOf(',');
                 query = query + "'" + valores.get(keys.get(i)).get("Country") + "'" + String.valueOf(',');
                 query = query + "'" + valores.get(keys.get(i)).get("Podiums") + "'" + String.valueOf(',');
                 query = query + "'" + valores.get(keys.get(i)).get("Points") + "'" + String.valueOf(',');
@@ -149,6 +150,8 @@ public class MainActivity extends AppCompatActivity {
                             positionSeason++;
                         }
 
+
+
                         //Color
                         String color = links.get(i).getElementsByClass("listing-item--link ").attr("style");
                         if(!color.equals(null)){
@@ -227,11 +230,27 @@ public class MainActivity extends AppCompatActivity {
                             v.put("Place of birth", aux_POB);
                         }
 
+                        //pointsSeason
+                        Document doc2 = Jsoup.connect(url + "/en/results.html/2022/drivers.html").get();
+                        List<String> equip = doc2.getElementsByClass("hide-for-mobile").stream().map(x -> x.text()).collect(Collectors.toList());
+                        List<String> pts = doc2.getElementsByClass("dark bold").stream().map(x -> x.text()).collect(Collectors.toList());
+
+
+                        for (int k = 0; k < equip.size(); k++){
+                            if(K_driver_name.contains(equip.get(k))){
+                                v.put("pointsSeason", pts.get(k));
+                            }
+                        }
+
                     }
 
                     if(valores.containsKey("")){
                         valores.remove("");
                     }
+                    /* ver el map entrada a entrada
+                    for(String name: valores.keySet()){
+                        System.out.println("aham: " + name + ": " + valores.get(name));
+                    }*/
 
                     System.out.println("res: " + valores);
                     System.out.println(valores.size());
@@ -246,6 +265,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         tv.setText(c.toString());
                         accesoBD(valores);
+                        System.out.println("Guayando");
                     }
                 });
             }
