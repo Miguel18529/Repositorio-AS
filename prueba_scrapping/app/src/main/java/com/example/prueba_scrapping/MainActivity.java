@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         if(db!= null){
             List<String> keys = valores.keySet().stream().collect(Collectors.toList());
             for(int i = 0; i<valores.size(); i++){
-                String query = String.valueOf("INSERT INTO") + String.valueOf(" drivers(possitionSeason, color, name, surname, team, pointsSeason, country, podiums, points, grand_prix_entered," +
+                String query = String.valueOf("INSERT INTO") + String.valueOf(" drivers(possitionSeason, color, name, surname, team, pointsSeason, imageLogoteam, imageFlag, imageNumber, country, podiums, points, grand_prix_entered," +
                         " world_championships, highest_race_finish, highest_grid_position, date_of_birth, place_of_birth) VALUES (");
 
                 query = query + "'" + valores.get(keys.get(i)).get("Positionseason") + "'" + String.valueOf(',');
@@ -68,6 +69,11 @@ public class MainActivity extends AppCompatActivity {
                 query = query + "'" + keys.get(i).split(" ")[1] + "'" + String.valueOf(',');
                 query = query + "'" + valores.get(keys.get(i)).get("Team") + "'" + String.valueOf(',');
                 query = query + "'" + valores.get(keys.get(i)).get("pointsSeason") + "'" + String.valueOf(',');
+                query = query + valores.get(keys.get(i)).get("imageLogoteam") + String.valueOf(',');
+                query = query + valores.get(keys.get(i)).get("imageFlag") + String.valueOf(',');
+                //TODO: Porque carajo das cero?:(
+                query = query + String.valueOf(getResources().getIdentifier(keys.get(i).split(" ")[1].substring(0, 3) + "number", "drawable", getPackageName())) + String.valueOf(',');
+
                 query = query + "'" + valores.get(keys.get(i)).get("Country") + "'" + String.valueOf(',');
                 query = query + "'" + valores.get(keys.get(i)).get("Podiums") + "'" + String.valueOf(',');
                 query = query + "'" + valores.get(keys.get(i)).get("Points") + "'" + String.valueOf(',');
@@ -147,6 +153,10 @@ public class MainActivity extends AppCompatActivity {
                             }
                             v.put(el_list.get(0), v_aux);
                             v.put("Positionseason", String.valueOf(positionSeason));
+
+                            //imageLogoteam
+                            int imageLt = getResources().getIdentifier(v_aux.toLowerCase(Locale.ROOT), "drawable", getPackageName());
+                            v.put("imageLogoteam", String.valueOf(imageLt));
                             positionSeason++;
                         }
 
@@ -170,6 +180,14 @@ public class MainActivity extends AppCompatActivity {
                             }
                             aux_count = aux_count.replaceFirst(" ", "");
                             v.put(el_list.get(indice), aux_count);
+
+                            //imageFlag
+                            int aux = getResources().getIdentifier("flag" + aux_count.toLowerCase(Locale.ROOT), "drawable", getPackageName());
+                            if(aux_count.equals("United Kingdom")){
+                                aux = getResources().getIdentifier("flaguk", "drawable", getPackageName());
+                            }
+                            v.put("imageFlag", String.valueOf(aux));
+
                         }
 
                         //Podiums
