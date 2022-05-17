@@ -2,6 +2,9 @@
 
     <string name="app_name">F1 App</string>
 
+    <!-- Strings related to Prelogin -->
+    <string name="prelogin">Enjoy the 2022 F1 season with the App to keep up to date with all the news, standings and more.</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -14,6 +17,10 @@
     <string name="remember_me">Remember me</string>
     <string name="join_us">Be part of F1 community. Join us.</string>
     <string name="forgot_your_password">Forgot your password?</string>
+    <string name="new_pass">Set new password here</string>
+    <string name="confirm_pass">Confirm pass</string>
+    <string name="name_register">Name</string>
+    <string name="register">Register now</string>
 
     <!-- Strings related to BottomNavigationActivity -->
     <string name="title_inicio">Home</string>
@@ -130,5 +137,26 @@
 
     <!-- Strings related to Settings -->
     <string name="settings">Settings</string>
+    <string name="myprofile">MY PROFILE</string>
+    <string name="username">username</string>
+    <string name="signout">Sign out</string>
+    <string name="socmed">OUR SOCIAL MEDIA</string>
+    <string name="twitter">Twitter</string>
+    <string name="youtube">Youtube</string>
+    <string name="insta">Instagram</string>
+    <string name="tickets">Tickets</string>
+    <string name="experiences">Experiences</string>
+    <string name="store">Store</string>
+    <string name="esports">Esports</string>
+    <string name="fantasy">Fantasy</string>
+    <string name="play">Play</string>
+    <string name="hospitality">Hospitality</string>
+    <string name="authentics">Authentics</string>
+    <string name="morecont">MORE F1 CONTENT</string>
+    <string name="officialapp">DOWNLOAD F1 OFFICIAL APPS</string>
+    <string name="official">Official F1 ® App</string>
+    <string name="tv">F1 TV</string>
+    <string name="raceguide">F1 Race Guide</string>
+
 
 </resources>

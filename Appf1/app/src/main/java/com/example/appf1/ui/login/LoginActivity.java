@@ -16,6 +16,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,7 +25,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.appf1.BottomNavigationActivity;
+import com.example.appf1.TabAndBottomActivity;
 import com.example.appf1.R;
 import com.example.appf1.databinding.ActivityLoginBinding;
 
@@ -128,17 +130,21 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-
         //Pasar de activity
         textView = (TextView) findViewById(R.id.textView2);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, BottomNavigationActivity.class);
+                Intent intent = new Intent(LoginActivity.this, TabAndBottomActivity.class);
                 startActivity(intent);
             }
         });
 
+
+        // <-- Cambia el color de la navigation bar (inicio) -->
+        Window window = this.getWindow();
+        window.setNavigationBarColor(this.getResources().getColor(R.color.colorGradientEnd));
+        // <-- Cambia el color de la navigation bar (fin) -->
 
 
 

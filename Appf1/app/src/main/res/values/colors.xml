@@ -35,4 +35,6 @@
 
     <color name="colorgrey">#858484</color>
 
+    <color name="colorprelogin">#79858484</color>
+
 </resources>

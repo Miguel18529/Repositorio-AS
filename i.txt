@@ -1,0 +1,20 @@
+Por hacer:
+-Añadir scraping
+-Funcionalidad login (y cerrar sesión en ajustes y que vuelva al login principal) (layout y todo hecho, falta la funcionalidad)
+-Al girar cambiar la orientacion con android:configChanges="orientation|screenSize" en el Manifest, guardo el estado (si el cardview esta abierto se queda abierto), pero utiliza el mismo layout tanto para vertical como horizontal, cuando debería de pillar el vertical cuando este vertical y el landscape y cuando este horizontal. ¿Funcion con el savedInstance..?
+-Mirar lo de onPause, onRestart...
+
+
+
+
+
+
+
+Descartado
+
+Si queda tiempo:
+-Animaciones
+-Tema oscuro real
+
+-Si se puede, en el cardview cuando este abierto, invertir color del fondo y de las letras
+-Si se puede, Cuando este android:state_pressed="true" que cada uno tengo distinto color por cada equipo

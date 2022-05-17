@@ -1,31 +1,35 @@
 package com.example.appf1;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
-public class StandingsFragment extends AppCompatActivity {
+public class StandingsFragment extends Fragment {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tabbed);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        //Inflate the layout for this fragment
+        View v = inflater.inflate(R.layout.fragment_standings, container, false);
 
-        TabLayout tabLayout = findViewById(R.id.tabLayoutStandings);
-        ViewPager viewPager = findViewById(R.id.viewpagerStandings);
+        TabLayout tabLayout = v.findViewById(R.id.tab_layout);
+        ViewPager viewPager = v.findViewById(R.id.standings_viewpager);
+
+        StandingsViewPagerAdapter adapter = new StandingsViewPagerAdapter(getChildFragmentManager(),
+                FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        viewPager.setAdapter(adapter);
 
         tabLayout.setupWithViewPager(viewPager);
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),
-                FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        viewPagerAdapter.addFragment(new DriversFragment(), "Drivers");
-        viewPagerAdapter.addFragment(new ConstructorsFragment(), "Constructors");
-        viewPagerAdapter.addFragment(new LastRaceFragment(), "Last Race");
-        viewPager.setAdapter(viewPagerAdapter);
 
+        return v;
     }
-
 }

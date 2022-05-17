@@ -1,4 +1,4 @@
-package com.example.prueba_scrapping;
+package com.example.appf1;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,7 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-public class  BaseDatos extends SQLiteOpenHelper {
+public class BBDDDrivers extends SQLiteOpenHelper {
+
 
     private static final String DRIVERS_TABLE_CREATE =
             String.valueOf("CREATE TABLE drivers (_id INTEGER PRIMARY KEY AUTOINCREMENT, possitionSeason TEXT, color TEXT, name TEXT, " +
@@ -15,7 +16,7 @@ public class  BaseDatos extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "drivers.db";
     private static final int DB_VERSION = 1;
-    public BaseDatos(@Nullable Context context) {
+    public BBDDDrivers(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 

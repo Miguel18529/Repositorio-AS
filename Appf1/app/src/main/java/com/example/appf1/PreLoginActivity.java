@@ -1,60 +1,66 @@
-package com.example.prueba_scrapping;
+package com.example.appf1;
+
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentValues;
-import android.content.SyncStatusObserver;
-import android.database.sqlite.SQLiteDatabase;
-import android.icu.lang.UScript;
-import android.os.Bundle;
-import android.os.Parcel;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.example.appf1.ui.login.LoginActivity;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-import com.example.prueba_scrapping.BaseDatos;
-
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
-public class MainActivity extends AppCompatActivity {
 
-    TextView tv, donete;
-    Button boton;
-    ImageView imagen;
+public class PreLoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        tv = findViewById(R.id.textView);
+        setContentView(R.layout.prelogin);
 
-        boton = findViewById(R.id.button);
-        imagen = findViewById(R.id.imageView);
+        int random_num = (int) (Math.random()*10);
+        int id;
+        ImageView imageView = findViewById(R.id.preloginImageView);
 
-        boton.setOnClickListener(new View.OnClickListener() {
+        if(random_num == 0 || random_num == 1 || random_num == 2) {
+            id = getResources().getIdentifier("prelogin1", "drawable", getPackageName());
+            imageView.setImageResource(id);
+        } else if(random_num == 3 || random_num == 5) {
+            id = getResources().getIdentifier("prelogin2", "drawable", getPackageName());
+            imageView.setImageResource(id);
+        } else if(random_num == 6) {
+            id = getResources().getIdentifier("prelogin3", "drawable", getPackageName());
+            imageView.setImageResource(id);
+        } else if(random_num == 7 || random_num == 8 || random_num == 9) {
+            id = getResources().getIdentifier("prelogin4", "drawable", getPackageName());
+            imageView.setImageResource(id);
+        } else if(random_num == 10) {
+            id = getResources().getIdentifier("prelogin5", "drawable", getPackageName());
+            imageView.setImageResource(id);
+        }
+
+        imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                verWeb();
+                Intent intent = new Intent(PreLoginActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
+
     }
 
     public void accesoBD(Map<String, Map<String, String>> valores){
-        BaseDatos dbHelper = new BaseDatos(this);
+        BBDDDrivers dbHelper = new BBDDDrivers(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         if(db!= null){

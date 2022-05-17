@@ -3,14 +3,9 @@ package com.example.appf1;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import java.util.ArrayList;
-
-public class ViewPagerAdapter extends FragmentPagerAdapter {
-
-    private final ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
-    private final ArrayList<String> fragmentTitle = new ArrayList<>();
+public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
@@ -19,21 +14,22 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return fragmentArrayList.get(position);
+        switch (position) {
+            case 0:
+                return new HomeFragment();
+            case 1:
+                return new StandingsFragment();
+            case 2:
+                return new CalendarFragment();
+            case 3:
+                return new SettingsFragment();
+            default:
+                return new HomeFragment();
+        }
     }
 
     @Override
     public int getCount() {
-        return fragmentArrayList.size();
+        return 4;
     }
-
-    public void addFragment(Fragment fragment, String title) {
-        fragmentArrayList.add(fragment);
-        fragmentTitle.add(title);
-    }
-
-    public CharSequence getPageTitle(int position) {
-        return fragmentTitle.get(position);
-    }
-
 }
