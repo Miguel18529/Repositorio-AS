@@ -2,8 +2,10 @@ package com.example.prueba_scrapping;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.SyncStatusObserver;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.icu.lang.UScript;
 import android.os.Bundle;
@@ -84,12 +86,20 @@ public class MainActivity extends AppCompatActivity {
                 query = query + "'" + valores.get(keys.get(i)).get("Date of birth") + "'" + String.valueOf(',');
                 query = query + "'" + valores.get(keys.get(i)).get("Place of birth") + "'" + String.valueOf(')');
 
-
-                System.out.println(query);
+                //System.out.println(query);
 
                 db.execSQL(query);
 
+
             }
+
+            //Amo a seleccionar
+            String querySelect = "SELECT * FROM drivers";
+            Cursor c = db.rawQuery(querySelect, null);
+            while (c.moveToNext()){
+                System.out.println("Hmm > " + c.getString(c.getColumnIndex("name")));
+            }
+
         }
     }
 
@@ -269,9 +279,9 @@ public class MainActivity extends AppCompatActivity {
                         System.out.println("aham: " + name + ": " + valores.get(name));
                     }*/
 
-                    System.out.println("res: " + valores);
-                    System.out.println(valores.size());
-                    System.out.println("Finalizado");
+                  //  System.out.println("res: " + valores);
+                  //  System.out.println(valores.size());
+                  //  System.out.println("Finalizado");
 
                 } catch (Exception e) {
                     System.out.println("Esto es muy poco guayando por tu parte:( " + e);

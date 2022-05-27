@@ -1,17 +1,21 @@
 package com.example.appf1;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appf1.ui.login.BaseDatos;
 import com.example.appf1.ui.login.LoginActivity;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,13 +24,15 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-
 public class PreLoginActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.prelogin);
+
+        verWeb();
 
         int random_num = (int) (Math.random()*10);
         int id;
@@ -49,9 +55,11 @@ public class PreLoginActivity extends AppCompatActivity {
             imageView.setImageResource(id);
         }
 
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(PreLoginActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
@@ -60,7 +68,7 @@ public class PreLoginActivity extends AppCompatActivity {
     }
 
     public void accesoBD(Map<String, Map<String, String>> valores){
-        BBDDDrivers dbHelper = new BBDDDrivers(this);
+        BaseDatos dbHelper = new BaseDatos(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         if(db!= null){
@@ -69,7 +77,7 @@ public class PreLoginActivity extends AppCompatActivity {
                 String query = String.valueOf("INSERT INTO") + String.valueOf(" drivers(possitionSeason, color, name, surname, team, pointsSeason, imageLogoteam, imageFlag, imageNumber, imageDriver, imageHelmet, country, podiums, points, grand_prix_entered," +
                         " world_championships, highest_race_finish, highest_grid_position, date_of_birth, place_of_birth) VALUES (");
 
-                query = query + "'" + valores.get(keys.get(i)).get("Positionseason") + "'" + String.valueOf(',');
+                query = query + valores.get(keys.get(i)).get("Positionseason") + String.valueOf(',');
                 query = query + "'" + valores.get(keys.get(i)).get("Color") + "'" + String.valueOf(',');
                 query = query + "'" + keys.get(i).split(" ")[0] + "'" + String.valueOf(',');
                 query = query + "'" + keys.get(i).split(" ")[1] + "'" + String.valueOf(',');
@@ -95,6 +103,7 @@ public class PreLoginActivity extends AppCompatActivity {
 
                 db.execSQL(query);
 
+
             }
         }
     }
@@ -108,6 +117,7 @@ public class PreLoginActivity extends AppCompatActivity {
         }
         return res;
     }
+
     public void verWeb(){
         new Thread(new Runnable() {
 
@@ -270,10 +280,6 @@ public class PreLoginActivity extends AppCompatActivity {
                     if(valores.containsKey("")){
                         valores.remove("");
                     }
-                    /* ver el map entrada a entrada
-                    for(String name: valores.keySet()){
-                        System.out.println("aham: " + name + ": " + valores.get(name));
-                    }*/
 
                     System.out.println("res: " + valores);
                     System.out.println(valores.size());
@@ -286,9 +292,10 @@ public class PreLoginActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        tv.setText(c.toString());
+
                         accesoBD(valores);
                         System.out.println("Guayando");
+
                     }
                 });
             }

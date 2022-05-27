@@ -1,6 +1,7 @@
 package com.example.prueba_scrapping;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -31,4 +32,6 @@ public class  BaseDatos extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS drivers");
         onCreate(sqLiteDatabase);
     }
+
+
 }

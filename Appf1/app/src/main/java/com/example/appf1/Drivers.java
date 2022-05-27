@@ -1,5 +1,7 @@
 package com.example.appf1;
 
+import com.example.appf1.ui.login.BaseDatos;
+
 public class Drivers {
 
     public String positionseason;
@@ -60,6 +62,82 @@ public class Drivers {
         // <--- Necesario para expandir (inicio) --->
         this.visibility = false;
         // <---- Necesario para expandir (fin) ---->
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setTeam(String team) {
+        this.team = team;
+    }
+
+    public void setPointsseason(String pointsseason) {
+        this.pointsseason = pointsseason;
+    }
+
+    public void setImageLogoteam(int imageLogoteam) {
+        this.imageLogoteam = imageLogoteam;
+    }
+
+    public void setImageFlag(int imageFlag) {
+        this.imageFlag = imageFlag;
+    }
+
+    public void setImageNumber(int imageNumber) {
+        this.imageNumber = imageNumber;
+    }
+
+    public void setImageDriver(int imageDriver) {
+        this.imageDriver = imageDriver;
+    }
+
+    public void setImageHelmet(int imageHelmet) {
+        this.imageHelmet = imageHelmet;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setPodium(String podium) {
+        this.podium = podium;
+    }
+
+    public void setPoints(String points) {
+        this.points = points;
+    }
+
+    public void setGpe(String gpe) {
+        this.gpe = gpe;
+    }
+
+    public void setWc(String wc) {
+        this.wc = wc;
+    }
+
+    public void setHrf(String hrf) {
+        this.hrf = hrf;
+    }
+
+    public void setHgp(String hgp) {
+        this.hgp = hgp;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    public void setPob(String pob) {
+        this.pob = pob;
+    }
+
+    public void setPositionseason(String positionseason) {
+        this.positionseason = positionseason;
     }
 
     public String getPositionseason() {
@@ -155,4 +233,8 @@ public class Drivers {
         this.visibility = visibility;
     }
     // <---- Necesario para expandir (fin) ---->
+
+    public String toString(){
+        return "-" + this.name + "-";
+    }
 }

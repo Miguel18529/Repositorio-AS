@@ -1,9 +1,13 @@
 package com.example.appf1;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,15 +16,44 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DriversFragment extends Fragment {
+import com.example.appf1.ui.login.BaseDatos;
+
+
+import org.jsoup.Connection;
+
+
+public class DriversFragment extends Fragment implements SearchView.OnQueryTextListener{
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        BaseDatos dbHelper = new BaseDatos(getActivity());
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String querySelect = "SELECT * FROM drivers ORDER BY possitionSeason";
+        Cursor c = db.rawQuery(querySelect, null);
+
         View v = inflater.inflate(R.layout.drivers_activity, container, false);
 
         List<Drivers> drivers = new ArrayList<>();
+        List<String> d = new ArrayList<>();
+        while (c.moveToNext()){
+            System.out.println("Hmm > " + c.getString(c.getColumnIndex("name")));
+
+            if (!d.contains(c.getString(c.getColumnIndex("name")))){
+                d.add(c.getString(c.getColumnIndex("name")));
+                drivers.add(new Drivers(c.getString(c.getColumnIndex("possitionSeason"))+"º", c.getString(c.getColumnIndex("color")), c.getString(c.getColumnIndex("name")), c.getString(c.getColumnIndex("surname")), c.getString(c.getColumnIndex("team")), c.getString(c.getColumnIndex("pointsSeason")),
+                        Integer.parseInt(c.getString(c.getColumnIndex("imageLogoteam"))), Integer.parseInt(c.getString(c.getColumnIndex("imageFlag"))), Integer.parseInt(c.getString(c.getColumnIndex("imageNumber"))), Integer.parseInt(c.getString(c.getColumnIndex("imageDriver"))), Integer.parseInt(c.getString(c.getColumnIndex("imageHelmet"))),
+                        c.getString(c.getColumnIndex("country")), c.getString(c.getColumnIndex("podiums")), c.getString(c.getColumnIndex("points")), c.getString(c.getColumnIndex("grand_prix_entered")), c.getString(c.getColumnIndex("world_championships")), c.getString(c.getColumnIndex("highest_race_finish")),
+                        c.getString(c.getColumnIndex("highest_grid_position")), c.getString(c.getColumnIndex("date_of_birth")), c.getString(c.getColumnIndex("place_of_birth"))));
+
+            }
+        }
+        System.out.println(drivers);
+/*
         drivers.add(new Drivers("18º", "#47C3E0", "Alex ", "ALBON ", "Williams", "1 PT", R.drawable.williams, R.drawable.flagthailand, R.drawable.albnumber, R.drawable.alb2, R.drawable.albhelmet, "Thailand", "2", "198", "42", "N/A", "3 (x2)", "4", "23/03/1996", "London, England"));
         drivers.add(new Drivers("1º", "#41A8E0", "Fernando ", "ALONSO ", "Alpine", "400 PTS", R.drawable.alpine, R.drawable.flagspain, R.drawable.alonumber, R.drawable.alo2, R.drawable.alohelmet, "Spain", "98", "1982", "340", "2", "1 (x32)", "1", "29/07/1981", "Oviedo, Spain"));
         drivers.add(new Drivers("9º", "#D64964", "Valtteri ", "BOTTAS ", "Alfa Romeo","28 PTS", R.drawable.alfaromeo, R.drawable.flagfinland, R.drawable.botnumber, R.drawable.bot2, R.drawable.bothelmet, "Finland", "67", "1762", "182", "N/A", "1 (x10)", "1", "28/08/1989", "Nastola, Finland"));
@@ -41,7 +74,7 @@ public class DriversFragment extends Fragment {
         drivers.add(new Drivers("16º", "#609CD4", "Max ", "VERSTAPPEN ", "Red Bull Racing","67 PTS", R.drawable.redbull, R.drawable.flagnetherlands, R.drawable.vernumber, R.drawable.ver2, R.drawable.verhelmet, "Netherlands", "62", "1616.5", "145", "1", "1 (x22)", "1", "30/09/1997", "Hasselt, Belgium"));
         drivers.add(new Drivers("17º", "#78CCB6", "Sebastian ", "VETTEL ", "Aston Martin","94 PTS", R.drawable.astonmartin, R.drawable.flaggermany, R.drawable.vetnumber, R.drawable.vet2, R.drawable.vethelmet, "Germany", "122", "3065", "282", "4", "1 (x53)", "1", "03/07/1987", "Heppenheim, Germany"));
         drivers.add(new Drivers("19º", "#D64964", "Guanyu ", "ZHOU ", "Alfa Romeo","25 PTS", R.drawable.alfaromeo, R.drawable.flagchina, R.drawable.zhonumber, R.drawable.zho2, R.drawable.zhohelmet, "China", "N/A", "1", "4", "N/A", "10 (x1)", "12", "30/05/1999", "Shanghai, China"));
-
+*/
         DriversAdapter driversAdapter = new DriversAdapter(drivers, getContext());
         RecyclerView recyclerView = v.findViewById(R.id.listDriversRecyclerView);
         recyclerView.setHasFixedSize(true);
@@ -50,5 +83,15 @@ public class DriversFragment extends Fragment {
 
         return v;
 
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        return false;
     }
 }

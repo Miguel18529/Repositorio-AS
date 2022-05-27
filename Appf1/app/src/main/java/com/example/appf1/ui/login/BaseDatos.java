@@ -1,22 +1,23 @@
-package com.example.appf1;
+package com.example.appf1.ui.login;
+
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-public class BBDDDrivers extends SQLiteOpenHelper {
-
+public class  BaseDatos extends SQLiteOpenHelper {
 
     private static final String DRIVERS_TABLE_CREATE =
-            String.valueOf("CREATE TABLE drivers (_id INTEGER PRIMARY KEY AUTOINCREMENT, possitionSeason TEXT, color TEXT, name TEXT, " +
+            String.valueOf("CREATE TABLE drivers (_id INTEGER PRIMARY KEY AUTOINCREMENT, possitionSeason INTEGER, color TEXT, name TEXT, " +
                     "surname TEXT, team TEXT, pointsSeason TEXT, imageLogoteam INTEGER, imageFlag INTEGER, imageNumber INTEGER, imageDriver INTEGER, imageHelmet INTEGER, country TEXT, podiums TEXT, points TEXT, grand_prix_entered TEXT, world_championships TEXT, " +
                     "highest_race_finish TEXT, highest_grid_position TEXT, date_of_birth TEXT, place_of_birth TEXT)");
 
     private static final String DB_NAME = "drivers.db";
     private static final int DB_VERSION = 1;
-    public BBDDDrivers(@Nullable Context context) {
+    public BaseDatos(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
@@ -31,5 +32,12 @@ public class BBDDDrivers extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS drivers");
         onCreate(sqLiteDatabase);
+    }
+
+    public Cursor readDB(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String querySelect = "SELECT * FROM drivers";
+        Cursor c = db.rawQuery(querySelect, null);
+        return c;
     }
 }
